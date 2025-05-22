@@ -17,7 +17,7 @@ export const SignUpButton = ({ className, usuario, onSignUpSuccess, ...props }) 
     setLoading(true);
 
     try {
-      const response = await fetch("REACT_APP_API_URL/api/usuarios/register", {
+      const response = await fetch("https://artroom-backend.onrender.com/api/usuarios/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

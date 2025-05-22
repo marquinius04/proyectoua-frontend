@@ -22,7 +22,7 @@ export const HistorialDeDescargas = () => {
 
     const fetchDownloadHistory = async () => {
       try {
-        const response = await fetch(`REACT_APP_API_URL/api/usuarios/${user._id}`, {
+        const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -36,7 +36,7 @@ export const HistorialDeDescargas = () => {
         // Aquí hacemos fetch de cada asset para obtener su info completa
         const assetsData = await Promise.all(
           filteredIds.map(async (assetId) => {
-            const res = await fetch(`REACT_APP_API_URL/api/recursos/${assetId}`, {
+            const res = await fetch(`https://artroom-backend.onrender.com/api/recursos/${assetId}`, {
               headers: {
                 Authorization: `Bearer ${user.token}`,
               },

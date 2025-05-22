@@ -21,7 +21,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   
     const fetchAsset = async () => {
       try {
-        const response = await fetch(`REACT_APP_API_URL/api/recursos/${id}`);
+        const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}`);
         if (!response.ok) {
           throw new Error("Error al obtener el asset");
         }
@@ -37,7 +37,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   
         // Contar vista
         if (user) {
-          await fetch(`REACT_APP_API_URL/api/recursos/${id}/view`, {
+          await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}/view`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: user._id }),
@@ -58,7 +58,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
 
     const fetchRandomAssets = async () => {
       try {
-        const response = await fetch("REACT_APP_API_URL/api/recursos/random"); // Solicita 3 assets aleatorios
+        const response = await fetch("https://artroom-backend.onrender.com/api/recursos/random"); // Solicita 3 assets aleatorios
         if (!response.ok) {
           throw new Error("Error al obtener assets aleatorios");
         }
@@ -72,7 +72,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
 
     const fetchComentarios = async () => {
       try {
-        const response = await fetch(`REACT_APP_API_URL/api/comentarios/recurso/${id}`);
+        const response = await fetch(`https://artroom-backend.onrender.com/api/comentarios/recurso/${id}`);
         if (!response.ok) throw new Error("Error al obtener comentarios");
         const data = await response.json();
         // Mapear para extraer lo necesario directamente
@@ -133,7 +133,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   
     try {
       // Registrar la descarga en el historial del usuario
-      await fetch(`REACT_APP_API_URL/api/usuarios/${user._id}/descargar/${id}`, {
+      await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}/descargar/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });      
@@ -159,7 +159,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
     }
   
     try {
-      const response = await fetch(`REACT_APP_API_URL/api/recursos/${id}/like`, {
+      const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -315,7 +315,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
                     throw new Error("Usuario no válido o no autenticado");
                   }
 
-                  const response = await fetch("REACT_APP_API_URL/api/comentarios", {
+                  const response = await fetch("https://artroom-backend.onrender.com/api/comentarios", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",

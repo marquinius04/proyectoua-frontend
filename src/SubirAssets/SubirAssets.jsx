@@ -7,7 +7,7 @@ const subirArchivoDropbox = async (file) => {
   const formData = new FormData();
   formData.append("archivo", file); // 'archivo' porque multer espera ese nombre
 
-  const response = await fetch("REACT_APP_API_URL/api/assets/upload", {
+  const response = await fetch("https://artroom-backend.onrender.com/api/assets/upload", {
     method: "POST",
     body: formData,
   });
@@ -96,7 +96,7 @@ export const SubirAssets = ({ className, ...props }) => {
     };
 
     try {
-      const response = await fetch("REACT_APP_API_URL/api/recursos", {
+      const response = await fetch("https://artroom-backend.onrender.com/api/recursos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(assetData),
@@ -174,7 +174,7 @@ export const SubirAssets = ({ className, ...props }) => {
     }
 
     // Cargar categorías desde el backend
-    fetch("REACT_APP_API_URL/api/categorias")
+    fetch("https://artroom-backend.onrender.com/api/categorias")
       .then((res) => res.json())
       .then((data) => {
         const nombres = data.map((cat) => cat.nombre);
@@ -185,7 +185,7 @@ export const SubirAssets = ({ className, ...props }) => {
       });
 
     // Cargar tipos desde el backend
-    fetch("REACT_APP_API_URL/api/tipos")
+    fetch("https://artroom-backend.onrender.com/api/tipos")
       .then((res) => res.json())
       .then((data) => {
         const nombres = data.map((tipo) => tipo.nombre);
