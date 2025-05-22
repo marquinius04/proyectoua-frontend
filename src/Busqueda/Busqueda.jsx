@@ -28,7 +28,7 @@ export const Busqueda = () => {
     const user = localStorage.getItem("user");
     setIsLoggedIn(!!user);
 
-    fetch("http://localhost:5000/api/recursos")
+    fetch("https://artroom-backend.onrender.com/api/recursos")
       .then((res) => res.json())
       .then((data) => {
         setRecursos(data);

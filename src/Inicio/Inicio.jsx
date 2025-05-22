@@ -19,7 +19,7 @@ export const Inicio = ({ className, ...props }) => {
     console.log("Usuario en Inicio:", user);
     setIsLoggedIn(!!user);
 
-    fetch("http://localhost:5000/api/recursos")
+    fetch("https://artroom-backend.onrender.com/api/recursos")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar recursos");

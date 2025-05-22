@@ -37,7 +37,7 @@ export const MisAssets = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/recursos/usuario/${user._id}`, {
+        const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/usuario/${user._id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },

@@ -56,7 +56,7 @@ export const Perfil = ({ className, ...props }) => {
       if (!user) return;
   
       try {
-        const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
+        const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
           headers: {
             "Authorization": `Bearer ${user.token}`,
           },
@@ -85,7 +85,7 @@ export const Perfil = ({ className, ...props }) => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/recursos/usuario/${user._id}`, {
+        const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/usuario/${user._id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -115,7 +115,7 @@ export const Perfil = ({ className, ...props }) => {
     const updatedLinks = [...socialLinks, ...pendingLinks];
   
     try {
-      const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
+      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +149,7 @@ export const Perfil = ({ className, ...props }) => {
     const user = JSON.parse(localStorage.getItem("user")); // Asegúrate de que user._id esté disponible
   
     try {
-      const response = await fetch(`http://localhost:5000/api/usuarios/delete-account/${user._id}`, {
+      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/delete-account/${user._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ export const Perfil = ({ className, ...props }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
+      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
