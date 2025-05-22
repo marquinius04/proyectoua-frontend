@@ -17,7 +17,7 @@ export const SignUpButton = ({ className, usuario, onSignUpSuccess, ...props }) 
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/usuarios/register", {
+      const response = await fetch("REACT_APP_API_URL/api/usuarios/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
