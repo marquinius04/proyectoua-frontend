@@ -1,13 +1,13 @@
 import "./SubirAssets.css";
-import { LogoArtRoomDefinitivo2 } from "../LogoArtRoomDefinitivo2/LogoArtRoomDefinitivo2.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Cabecera } from "../Componentes/Cabecera.jsx";
 
 const subirArchivoDropbox = async (file) => {
   const formData = new FormData();
   formData.append("archivo", file); // 'archivo' porque multer espera ese nombre
 
-  const response = await fetch("https://artroom-backend.onrender.com/api/assets/upload", {
+  const response = await fetch("http://localhost:5000/api/assets/upload", {
     method: "POST",
     body: formData,
   });
@@ -96,7 +96,7 @@ export const SubirAssets = ({ className, ...props }) => {
     };
 
     try {
-      const response = await fetch("https://artroom-backend.onrender.com/api/recursos", {
+      const response = await fetch("http://localhost:5000/api/recursos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(assetData),
@@ -141,6 +141,23 @@ export const SubirAssets = ({ className, ...props }) => {
     setUploadedFileName(""); // Elimina el nombre del archivo subido
   };
 
+  const handleProfileClick = () => navigate("/profile");
+  const handleUploadClick = () => navigate("/uploadAssets");
+
+  const handleSignInClick = () => {
+    navigate("/login"); // Redirige a la página de Login
+  };
+
+  const handleSignUpClick = () => {
+    navigate("/signUp"); // Redirige a la página de Registro
+  };
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/"); // o "/login"
+  };
+
   useEffect(() => {
     const userRaw = localStorage.getItem("user"); // Obtiene el usuario del localStorage
     let user;
@@ -157,7 +174,7 @@ export const SubirAssets = ({ className, ...props }) => {
     }
 
     // Cargar categorías desde el backend
-    fetch("https://artroom-backend.onrender.com/api/categorias")
+    fetch("http://localhost:5000/api/categorias")
       .then((res) => res.json())
       .then((data) => {
         const nombres = data.map((cat) => cat.nombre);
@@ -168,7 +185,7 @@ export const SubirAssets = ({ className, ...props }) => {
       });
 
     // Cargar tipos desde el backend
-    fetch("https://artroom-backend.onrender.com/api/tipos")
+    fetch("http://localhost:5000/api/tipos")
       .then((res) => res.json())
       .then((data) => {
         const nombres = data.map((tipo) => tipo.nombre);
@@ -181,25 +198,14 @@ export const SubirAssets = ({ className, ...props }) => {
 
   return (
     <div className={`p-gina-de-subir-assets`}>
-      <div className="header">
-        <LogoArtRoomDefinitivo2 className="logo-art-room-definitivo-2-instance" />
-        <div className="search-container">
-          <img
-            src="https://www.dropbox.com/scl/fi/ieaswykdv57270lwyk217/vector0.svg?rlkey=infc1esp7w5jleq4zlb80nr5p&st=f84l3uv2&raw=1"
-            alt="Search Icon"
-            className="search-icon"
-          />
-          <input type="text" className="search-text" placeholder="Search..." />
-        </div>
-        <div className="auth-buttons">
-          <button className="upload-icon">
-            <img src="https://www.dropbox.com/scl/fi/o4cednhkybd1ty8xsp5x7/upload-icon.png?rlkey=0ymn2yz9rqdpuyf2hd50hoa7o&st=0t6y1zo8&dl&raw=1"></img>
-          </button>
-          <button className="user-icon">
-            <img src="https://www.dropbox.com/scl/fi/hfz5wn581d6rot1ccxuyh/user-icon.png?rlkey=hm75yyttqaw7hb8n5tk3ja3xq&st=rknzoa1v&dl&raw=1"></img>
-          </button>
-        </div>
-      </div>
+      <Cabecera
+        isLoggedIn={isLoggedIn}
+        handleUploadClick={handleUploadClick}
+        handleProfileClick={handleProfileClick}
+        handleSignUpClick={handleSignUpClick}
+        handleSignInClick={handleSignInClick}
+        handleLogoutClick={handleLogoutClick}
+      />
 
       <div className="subir-assets-container">
         <div className="div-izquierda">

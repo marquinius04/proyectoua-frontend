@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./MisAssets.css";
+import "./HistorialDeDescargas.css";
 import { Cabecera } from "../Componentes/Cabecera.jsx";
 
-export const MisAssets = () => {
-  const [assets, setAssets] = useState([]); // Estado para almacenar los assets del usuario
-  const [loading, setLoading] = useState(true); // Estado para manejar la carga
-  const [error, setError] = useState(null); // Estado para manejar errores
+export const HistorialDeDescargas = () => {
+  const [downloadedAssets, setDownloadedAssets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  const handleSignInClick = () => {
-    navigate("/login"); // Redirige a la página de Login
-  };
-
-  const handleSignUpClick = () => {
-    navigate("/signUp"); // Redirige a la página de Registro
-  };
-
+  const handleSignInClick = () => navigate("/login");
+  const handleSignUpClick = () => navigate("/signUp");
   const handleUploadClick = () => navigate("/uploadAssets");
-
   const handleProfileClick = () => navigate("/profile");
 
   useEffect(() => {
@@ -27,46 +20,51 @@ export const MisAssets = () => {
     const user = userStr ? JSON.parse(userStr) : null;
     setIsLoggedIn(!!user);
 
-    const fetchUserAssets = async () => {
-      const userStr = localStorage.getItem("user");
-      const user = userStr ? JSON.parse(userStr) : null;
-
-      if (!user || !user._id) {
-        navigate("/login"); // Redirige al login si el usuario no está autenticado
-        return;
-      }
-
+    const fetchDownloadHistory = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/recursos/usuario/${user._id}`, {
+        const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         });
-
-        if (!response.ok) {
-          throw new Error("Error al obtener los assets del usuario");
-        }
-
-        const data = await response.json();
-        setAssets(data); // Actualiza el estado con los assets del usuario
-      } catch (error) {
-        console.error("Error al obtener los assets:", error);
-        setError(true); // Cambia el estado de error a true
+      
+        if (!response.ok) throw new Error("Error al obtener el historial de descargas");
+      
+        const userData = await response.json();
+        const filteredIds = (userData.downloadHistory || []).filter(id => id !== null);
+  
+        // Aquí hacemos fetch de cada asset para obtener su info completa
+        const assetsData = await Promise.all(
+          filteredIds.map(async (assetId) => {
+            const res = await fetch(`http://localhost:5000/api/recursos/${assetId}`, {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            });
+            if (!res.ok) return null;
+            return res.json();
+          })
+        );
+  
+        // Filtramos los null (por si algún asset no existe)
+        setDownloadedAssets(assetsData.filter(asset => asset !== null));
+      } catch (err) {
+        console.error("Error al obtener historial de descargas:", err);
+        setError(true);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUserAssets();
+    fetchDownloadHistory();
   }, [navigate]);
 
   const handleAssetClick = (id) => {
-    navigate(`/asset/${id}`); // Navega a la página del asset individual
+    navigate(`/asset/${id}`);
   };
 
   return (
     <div className="mis-assets">
-      {/* Header */}
       <Cabecera
         isLoggedIn={isLoggedIn}
         handleUploadClick={handleUploadClick}
@@ -75,21 +73,17 @@ export const MisAssets = () => {
         handleSignInClick={handleSignInClick}
       />
 
-      {/* Contenedor principal */}
       <div className="assets-container">
-        <h1 className="assets-title">My Assets</h1>
+        <h1 className="assets-title">Historial de Descargas</h1>
         {loading ? (
-          <div className="loading">Cargando tus assets...</div>
-        ) : error || assets.length === 0 ? (
+          <div className="loading">Cargando historial...</div>
+        ) : error || downloadedAssets.length === 0 ? (
           <div className="no-assets-container">
-            <p className="no-assets-message">¡Aún no has subido nada! Sube algo aquí:</p>
-            <button className="upload-button" onClick={handleUploadClick}>
-              Subir Asset
-            </button>
+            <p className="no-assets-message">No has descargado ningún asset aún.</p>
           </div>
         ) : (
           <div className="assets-grid">
-            {assets.map((asset) => (
+            {downloadedAssets.map((asset) => (
               <div
                 key={asset._id}
                 className="asset-item"
@@ -102,9 +96,6 @@ export const MisAssets = () => {
                 />
                 <div className="asset-info">
                   <h2 className="asset-title">{asset.titulo}</h2>
-                  <p className="asset-description">
-                    {asset.descripcion || "Sin descripción"}
-                  </p>
                   <div className="asset-stats">
                     <div className="asset-likes">
                       <img

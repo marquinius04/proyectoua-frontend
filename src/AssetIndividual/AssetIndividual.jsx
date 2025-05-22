@@ -21,7 +21,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   
     const fetchAsset = async () => {
       try {
-        const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}`);
+        const response = await fetch(`http://localhost:5000/api/recursos/${id}`);
         if (!response.ok) {
           throw new Error("Error al obtener el asset");
         }
@@ -37,7 +37,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   
         // Contar vista
         if (user) {
-          await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}/view`, {
+          await fetch(`http://localhost:5000/api/recursos/${id}/view`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: user._id }),
@@ -58,7 +58,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
 
     const fetchRandomAssets = async () => {
       try {
-        const response = await fetch("https://artroom-backend.onrender.com/api/recursos/random"); // Solicita 3 assets aleatorios
+        const response = await fetch("http://localhost:5000/api/recursos/random"); // Solicita 3 assets aleatorios
         if (!response.ok) {
           throw new Error("Error al obtener assets aleatorios");
         }
@@ -72,7 +72,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
 
     const fetchComentarios = async () => {
       try {
-        const response = await fetch(`https://artroom-backend.onrender.com/api/comentarios/recurso/${id}`);
+        const response = await fetch(`http://localhost:5000/api/comentarios/recurso/${id}`);
         if (!response.ok) throw new Error("Error al obtener comentarios");
         const data = await response.json();
         // Mapear para extraer lo necesario directamente
@@ -92,6 +92,14 @@ export const AssetIndividual = ({ className = "", ...props }) => {
     fetchComentarios();
   }, [id]); // Ejecuta el efecto cuando cambia el id
 
+  const handleDownload = (url, filename) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', filename || 'archivo'); // Nombre por defecto
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   
 
   if (loading) return <div>Cargando modelo...</div>; // Muestra un mensaje mientras se cargan los datos
@@ -114,6 +122,30 @@ export const AssetIndividual = ({ className = "", ...props }) => {
     navigate("/");
   };
 
+  const registrarDescarga = async () => {
+    const userStr = localStorage.getItem("user");
+    const user = userStr ? JSON.parse(userStr) : null;
+  
+    if (!user || !user._id) {
+      alert("Debes iniciar sesión para descargar este recurso");
+      return;
+    }
+  
+    try {
+      // Registrar la descarga en el historial del usuario
+      await fetch(`http://localhost:5000/api/usuarios/${user._id}/descargar/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });      
+  
+      // Descargar el archivo
+      handleDownload(asset.archivoUrl, `${asset.titulo || "archivo"}.zip`);
+    } catch (error) {
+      console.error("Error al registrar la descarga:", error);
+      alert("Error al registrar la descarga");
+    }
+  };
+
   const handleToggleLike = async () => {
     if (!isLoggedIn) {
       alert("Debes iniciar sesión para dar like");
@@ -127,7 +159,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
     }
   
     try {
-      const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/${id}/like`, {
+      const response = await fetch(`http://localhost:5000/api/recursos/${id}/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -195,7 +227,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
                   className="stat-icon"
                   src="https://www.dropbox.com/scl/fi/voana9ty7p7zl13it9os8/view-icon.png?rlkey=ma0u1ziyxl1zb0fgilffd3jjx&raw=1"
                 />
-                {asset?.numVistas -1 || "Falta BD"}
+                {asset?.numVistas - 1 || "Falta BD"}
               </h1>
             </div>
             <p className="asset-usuario">Subido por: {asset.usuarioId.username}</p>
@@ -215,9 +247,9 @@ export const AssetIndividual = ({ className = "", ...props }) => {
               </div>
             )}
 
-            <a href={asset.archivoUrl} download className="download-button">
-              Descargar
-            </a>
+          <button className="download-button" onClick={registrarDescarga}>
+            Descargar
+          </button>
           </div>
 
           {/* Proyectos relacionados */}
@@ -283,7 +315,7 @@ export const AssetIndividual = ({ className = "", ...props }) => {
                     throw new Error("Usuario no válido o no autenticado");
                   }
 
-                  const response = await fetch("https://artroom-backend.onrender.com/api/comentarios", {
+                  const response = await fetch("http://localhost:5000/api/comentarios", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",

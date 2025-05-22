@@ -121,10 +121,6 @@ body {
 }
 
 /* Recommended Assets */
-.p-gina-de-inicio-no-logueado .recommended-assets {
-  padding: 20px 50px;
-}
-
 .p-gina-de-inicio-no-logueado .recommended-assets h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -370,15 +366,15 @@ body {
 }
 
 @media (max-width: 220px) {
-  .p-gina-de-inicio-no-logueado .recommended-assets {
-    padding: 0px;
-  }
-
   .p-gina-de-inicio-no-logueado .categories-link {
     margin: 0px;
   }
 
   .p-gina-de-inicio-no-logueado .trending-assets {
     padding: 0px;
+  }
+
+  .p-gina-de-inicio-no-logueado .recommended-assets h2 {
+    font-size: 14px;
   }
 }

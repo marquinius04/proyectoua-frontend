@@ -12,14 +12,33 @@ export const Inicio = ({ className, ...props }) => {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [recursos, setRecursos] = useState([]);
+
+    const [searchQuery, setSearchQuery] = useState("");
   const [filteredRecursos, setFilteredRecursos] = useState([]);
+
+  const onSearchChange = (e) => {
+    const searchText = e.target.value;
+    setSearchQuery(searchText);
+
+    const lowercasedText = searchText.toLowerCase();
+    const filtered = recursos.filter((recurso) =>
+      recurso.nombre && recurso.nombre.toLowerCase().includes(lowercasedText)
+    );
+    setFilteredRecursos(filtered);
+  };
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+  };
+
 
   useEffect(() => {
     const user = localStorage.getItem("user"); // O usa auth context, JWT, etc.
     console.log("Usuario en Inicio:", user);
     setIsLoggedIn(!!user);
 
-    fetch("https://artroom-backend.onrender.com/api/recursos")
+    fetch("http://localhost:5000/api/recursos")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar recursos");
@@ -43,13 +62,11 @@ export const Inicio = ({ className, ...props }) => {
     navigate("/");
   };
 
-  const onSearchChange = (searchText) => {
-    const lowercasedText = searchText.toLowerCase();
-    const filtered = recursos.filter((recurso) =>
-      recurso.nombre && recurso.nombre.toLowerCase().includes(lowercasedText)
-    );
-    setFilteredRecursos(filtered);
+
+  const handleCategoryClick = (tipo) => {
+    navigate(`/search?tipo=${encodeURIComponent(tipo)}`);
   };
+
 
   const handleAssetClick = (id) => {
     navigate(`/asset/${id}`);
@@ -66,12 +83,21 @@ export const Inicio = ({ className, ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
-        handleSearchChange={onSearchChange}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
 
       <div className="filters-grid">
-        {categories.map((category, index) => (
-          <div key={index} className="filter-item">{category}</div>
+        {categories.map((tipo, index) => (
+          <div
+            key={index}
+            className="filter-item"
+            onClick={() => handleCategoryClick(tipo)}
+            style={{ cursor: "pointer" }}
+          >
+            {tipo}
+          </div>
         ))}
       </div>
 
@@ -117,3 +143,4 @@ export const Inicio = ({ className, ...props }) => {
     </div>
   );
 };
+

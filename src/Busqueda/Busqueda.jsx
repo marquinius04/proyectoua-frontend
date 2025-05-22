@@ -11,8 +11,9 @@ export const Busqueda = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
-  // Inicializar searchQuery solo una vez con la URL al montar
-  const [searchQuery, setSearchQuery] = useState(queryParams.get("q")?.toLowerCase() || "");
+  const [inputValue, setInputValue] = useState(queryParams.get("q") || "");
+  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
+
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [recursos, setRecursos] = useState([]);
@@ -24,11 +25,37 @@ export const Busqueda = () => {
   const tipos = [...new Set(recursos.map((r) => r.tipo).filter(Boolean))];
   const categorias = [...new Set(recursos.flatMap((r) => r.tags || []).filter(Boolean))];
 
+  
+  useEffect(() => {
+    // Leer parámetro categoria desde URL
+    const categoriaParam = new URLSearchParams(location.search).get("categoria");
+
+    if (categoriaParam) {
+      setCategoriasSeleccionadas([categoriaParam]);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+  const tipoParam = new URLSearchParams(location.search).get("tipo");
+
+  if (tipoParam) {
+    setTiposSeleccionados([tipoParam]);
+  }
+}, [location.search]);
+
+
+  // Sincroniza el estado local searchQuery si cambia la URL (ej. atrás/adelante)
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get("q") || "";
+    setSearchQuery(q.toLowerCase());
+  }, [location.search]);
+
+  // Carga recursos y estado login
   useEffect(() => {
     const user = localStorage.getItem("user");
     setIsLoggedIn(!!user);
 
-    fetch("https://artroom-backend.onrender.com/api/recursos")
+    fetch("http://localhost:5000/api/recursos")
       .then((res) => res.json())
       .then((data) => {
         setRecursos(data);
@@ -36,34 +63,50 @@ export const Busqueda = () => {
       .catch((err) => console.error("Error al cargar recursos:", err));
   }, []);
 
+  // Filtro aplicado en dos pasos: filtros sobre todos los recursos y luego búsqueda
   useEffect(() => {
-    // Filtrar usando el estado local searchQuery y filtros seleccionados
-    const resultados = recursos.filter((recurso) => {
-      const coincideTitulo = !searchQuery || recurso.titulo?.toLowerCase().includes(searchQuery);
-      const coincideTipo = tiposSeleccionados.length === 0 || tiposSeleccionados.includes(recurso.tipo);
+    const filtradoPorFiltros = recursos.filter((recurso) => {
+      const coincideTipo =
+        tiposSeleccionados.length === 0 || tiposSeleccionados.includes(recurso.tipo);
       const coincideCategoria =
         categoriasSeleccionadas.length === 0 ||
         recurso.tags?.some((tag) => categoriasSeleccionadas.includes(tag));
-      return coincideTitulo && coincideTipo && coincideCategoria;
+      return coincideTipo && coincideCategoria;
+    });
+
+    const resultados = filtradoPorFiltros.filter((recurso) => {
+      return !searchQuery || recurso.titulo?.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
     setFilteredRecursos(resultados);
   }, [recursos, searchQuery, tiposSeleccionados, categoriasSeleccionadas]);
 
-  // Al cambiar el input, actualizamos el estado local y la URL
-  const onSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchQuery(value.toLowerCase());
 
-    const params = new URLSearchParams(location.search);
-    if (value.trim() === "") {
-      params.delete("q");
-    } else {
-      params.set("q", value);
-    }
-    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+  // Función que actualiza searchQuery y la URL con navigate
+  const onSearchChange = (e) => {
+    setInputValue(e.target.value);
   };
 
+  const onSearchSubmit = () => {
+    const trimmedValue = inputValue.trim();
+
+    setSearchQuery(trimmedValue);
+
+    const params = new URLSearchParams(); // <-- Empezamos desde cero
+    if (trimmedValue !== "") {
+      params.set("q", trimmedValue);
+    }
+
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+
+    // Limpiamos los filtros seleccionados
+    setCategoriasSeleccionadas([]);
+    setTiposSeleccionados([]);
+  };
+
+
+
+  // Toggle filtros
   const toggleTipo = (tipo) => {
     setTiposSeleccionados((prev) =>
       prev.includes(tipo) ? prev.filter((t) => t !== tipo) : [...prev, tipo]
@@ -72,7 +115,9 @@ export const Busqueda = () => {
 
   const toggleCategoria = (categoria) => {
     setCategoriasSeleccionadas((prev) =>
-      prev.includes(categoria) ? prev.filter((c) => c !== categoria) : [...prev, categoria]
+      prev.includes(categoria)
+        ? prev.filter((c) => c !== categoria)
+        : [...prev, categoria]
     );
   };
 
@@ -89,28 +134,24 @@ export const Busqueda = () => {
     navigate(`/asset/${id}`);
   };
 
-  return (
+  return (  
     <div className="pagina-busqueda">
       <div className="content">
-        <Cabecera
-          isLoggedIn={isLoggedIn}
-          handleUploadClick={handleUploadClick}
-          handleProfileClick={handleProfileClick}
-          handleSignUpClick={handleSignUpClick}
-          handleSignInClick={handleSignInClick}
-          handleLogoutClick={handleLogoutClick}
-        />
-
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={onSearchChange}
-          placeholder="Buscar recursos..."
-          style={{ margin: "1em 0", padding: "0.5em", width: "100%", maxWidth: "400px" }}
-        />
+      <Cabecera
+        isLoggedIn={isLoggedIn}
+        handleUploadClick={handleUploadClick}
+        handleProfileClick={handleProfileClick}
+        handleSignUpClick={handleSignUpClick}
+        handleSignInClick={handleSignInClick}
+        handleLogoutClick={handleLogoutClick}
+        inputValue={inputValue}       // PASAMOS EL ESTADO
+        onSearchChange={onSearchChange} // PASAMOS LA FUNCIÓN
+        onSearchSubmit={onSearchSubmit}
+      />
 
         <h2>Resultados de búsqueda: "{searchQuery}"</h2>
 
+        {/* Filtros */}
         <div className="filtros-busqueda">
           <div className="filtro-seccion">
             <h4>Tipos</h4>
@@ -141,6 +182,7 @@ export const Busqueda = () => {
           </div>
         </div>
 
+        {/* Resultados */}
         <div className="assets-grid">
           {filteredRecursos.length > 0 ? (
             filteredRecursos.map((asset) => (

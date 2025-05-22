@@ -16,6 +16,54 @@ export const Perfil = ({ className, ...props }) => {
   const [userAssets, setUserAssets] = useState([]); // Estado para los assets del usuario
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [nombreUsuario, setNombreUsuario] = useState("");
+  const [downloadedAssets, setDownloadedAssets] = useState([]);
+
+
+  useEffect(() => {
+    const userStr = localStorage.getItem("user");
+    const user = userStr ? JSON.parse(userStr) : null;
+    setIsLoggedIn(!!user);
+
+    const fetchDownloadHistory = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+      
+        if (!response.ok) throw new Error("Error al obtener el historial de descargas");
+      
+        const userData = await response.json();
+        const filteredIds = (userData.downloadHistory || []).filter(id => id !== null);
+  
+        // Aquí hacemos fetch de cada asset para obtener su info completa
+        const assetsData = await Promise.all(
+          filteredIds.map(async (assetId) => {
+            const res = await fetch(`http://localhost:5000/api/recursos/${assetId}`, {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            });
+            if (!res.ok) return null;
+            return res.json();
+          })
+        );
+  
+        // Filtramos los null (por si algún asset no existe)
+        setDownloadedAssets(assetsData.filter(asset => asset !== null));
+      } catch (err) {
+        console.error("Error al obtener historial de descargas:", err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchDownloadHistory();
+  }, [navigate]);
+  
 
 
   const detectSocialType = (url) => {
@@ -51,12 +99,16 @@ export const Perfil = ({ className, ...props }) => {
   
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if(user && user.username){
+      setNombreUsuario(user.username);
+    }
     const fetchUserSocialLinks = async () => {
       const user = JSON.parse(localStorage.getItem("user"));
       if (!user) return;
   
       try {
-        const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
+        const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
           headers: {
             "Authorization": `Bearer ${user.token}`,
           },
@@ -85,7 +137,7 @@ export const Perfil = ({ className, ...props }) => {
       }
 
       try {
-        const response = await fetch(`https://artroom-backend.onrender.com/api/recursos/usuario/${user._id}`, {
+        const response = await fetch(`http://localhost:5000/api/recursos/usuario/${user._id}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -115,7 +167,7 @@ export const Perfil = ({ className, ...props }) => {
     const updatedLinks = [...socialLinks, ...pendingLinks];
   
     try {
-      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
+      const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +201,7 @@ export const Perfil = ({ className, ...props }) => {
     const user = JSON.parse(localStorage.getItem("user")); // Asegúrate de que user._id esté disponible
   
     try {
-      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/delete-account/${user._id}`, {
+      const response = await fetch(`http://localhost:5000/api/usuarios/delete-account/${user._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +241,7 @@ export const Perfil = ({ className, ...props }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`https://artroom-backend.onrender.com/api/usuarios/${user._id}`, {
+      const response = await fetch(`http://localhost:5000/api/usuarios/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -213,7 +265,6 @@ export const Perfil = ({ className, ...props }) => {
       setLoading(false);
     }
   };
-
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 875);
@@ -254,6 +305,10 @@ export const Perfil = ({ className, ...props }) => {
 
   const handleUploadClick = () => navigate("/uploadAssets");
 
+  const handleAssetClick = (id) => {
+    navigate(`/asset/${id}`);
+  };
+
   return (
     <div className={`background`}>
       <Cabecera
@@ -262,6 +317,7 @@ export const Perfil = ({ className, ...props }) => {
         handleProfileClick={handleProfileClick}
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
+        handleLogoutClick={handleLogoutClick}
       />
 
       <div className="dashboard-usuario">
@@ -269,6 +325,12 @@ export const Perfil = ({ className, ...props }) => {
           <div className="dashboard-perfil">
             <div className="arriba-perfil">
               <img className="profile-photo" src="https://www.dropbox.com/scl/fi/hfz5wn581d6rot1ccxuyh/user-icon.png?rlkey=hm75yyttqaw7hb8n5tk3ja3xq&st=rknzoa1v&dl&raw=1"></img>
+              {nombreUsuario && (
+                <div className="bienvenida-usuario">
+                  ¡Bienvenido/a, {nombreUsuario}!
+                </div>
+              )}
+
               <div className="social-icons-under-profile">
                 {socialLinks.map((link, idx) => (
                   <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="social-link-icon">
@@ -295,8 +357,13 @@ export const Perfil = ({ className, ...props }) => {
                   </button>
                 </div>
               ) : (
-                userAssets.map((asset) => (
-                  <div key={asset._id} className="asset-item">
+                userAssets.slice(0, 3).map((asset) => (
+                  <div
+                  key={asset._id}
+                  className="asset-item"
+                  onClick={() => handleAssetClick(asset._id)}
+                  style={{ cursor: "pointer" }}
+                  >
                     <img
                       src={asset.previewUrl || asset.archivoUrl}
                       alt={asset.titulo}
@@ -324,18 +391,10 @@ export const Perfil = ({ className, ...props }) => {
                           />
                           {asset.numVistas || 0}
                         </div>
-                        <div className="asset-downloads">
-                          <img
-                            src="https://www.dropbox.com/scl/fi/voana9ty7p7zl13it9os8/download-icon.png?rlkey=ma0u1ziyxl1zb0fgilffd3jjx&raw=1"
-                            alt="Downloads"
-                            className="stat-icon"
-                          />
-                          {asset.numDescargas || 0}
-                        </div>
                       </div>
                     </div>
                   </div>
-                ))
+                ))                
               )}
             </div>
           </div>
@@ -346,26 +405,36 @@ export const Perfil = ({ className, ...props }) => {
               <>
                 <a href="/downloadHistory">Download history</a>
                 <div className="assets-grid">
-                  {userAssets.map((asset, index) => (
-                    <div key={index} className="asset-item">
-                      <img src={asset.image} alt={asset.title} className="asset-image" />
-                      <div className="asset-title">{asset.title}</div>
-                      <div className="asset-stats">
-                        <div className="asset-likes">
-                          <img
-                            src="https://www.dropbox.com/scl/fi/q33jkrd672q4d25su0x05/like-icon.png?rlkey=sp7h5t1wobga7jb2ctkk0tbcf&st=fnredprb&raw=1"
-                            alt="Likes"
-                            className="stat-icon"
-                          />
-                          {asset.likes}
-                        </div>
-                        <div className="asset-views">
-                          <img
-                            src="https://www.dropbox.com/scl/fi/voana9ty7p7zl13it9os8/view-icon.png?rlkey=ma0u1ziyxl1zb0fgilffd3jjx&st=mt18cmdg&raw=1"
-                            alt="Views"
-                            className="stat-icon"
-                          />
-                          {asset.views}
+                  {downloadedAssets.map((asset) => (
+                    <div
+                      key={asset._id}
+                      className="asset-item"
+                      onClick={() => handleAssetClick(asset._id)}
+                    >
+                      <img
+                        src={asset.previewUrl || asset.archivoUrl}
+                        alt={asset.titulo}
+                        className="asset-image"
+                      />
+                      <div className="asset-info">
+                        <h2 className="asset-title">{asset.titulo}</h2>
+                        <div className="asset-stats">
+                          <div className="asset-likes">
+                            <img
+                              src="https://www.dropbox.com/scl/fi/q33jkrd672q4d25su0x05/like-icon.png?rlkey=sp7h5t1wobga7jb2ctkk0tbcf&raw=1"
+                              alt="Likes"
+                              className="stat-icon"
+                            />
+                            {asset.numLikes || 0}
+                          </div>
+                          <div className="asset-views">
+                            <img
+                              src="https://www.dropbox.com/scl/fi/voana9ty7p7zl13it9os8/view-icon.png?rlkey=ma0u1ziyxl1zb0fgilffd3jjx&raw=1"
+                              alt="Views"
+                              className="stat-icon"
+                            />
+                            {asset.numVistas || 0}
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -10,7 +10,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #414c3e;
+  background-color: #2b6340;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
@@ -111,4 +111,27 @@
 .upload-button:hover {
   background-color: #45a96a;
   transform: scale(1.05);
+}
+
+@media (max-width: 300px) {
+  .assets-container .assets-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin: 0px;
+  }
+
+  .assets-container .asset-image {
+    height: 120px;
+  }
+
+  .assets-container .asset-title {
+    font-size: 1rem;
+  }
+
+  .assets-container .asset-description {
+    font-size: 0.8rem;
+  }
+
+  .assets-container .assets-title {
+    font-size: 1rem;
+  }
 }

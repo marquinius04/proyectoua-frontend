@@ -1,5 +1,6 @@
 h2{
-    color:white;
+    color: white;
+    margin: 25px;
 }
 
 .filtros-busqueda {
@@ -12,6 +13,7 @@ h2{
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin:25px;
 }
 
 .filtro-seccion {
@@ -43,5 +45,5 @@ h2{
 }
 
 .assets-grid{
-    margin:35px;
+    margin:25px;
 }

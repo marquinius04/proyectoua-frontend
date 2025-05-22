@@ -10,6 +10,7 @@ import { SubirAssets } from "./SubirAssets/SubirAssets"; // Importa correctament
 import { AssetIndividual } from "./AssetIndividual/AssetIndividual"; // Página que usará AssetIndividual
 import { MisAssets } from "./MisAssets/MisAssets";
 import { Busqueda } from "./Busqueda/Busqueda";
+import { HistorialDeDescargas } from "./HistorialDeDescargas/HistorialDeDescargas";
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/asset/:id" element={<AssetIndividual />} />
         <Route path="/my-assets" element={<MisAssets />} />
         <Route path="/search" element={<Busqueda />} />
+        <Route path="/downloadHistory" element={<HistorialDeDescargas />} />
       </Routes>
     </Router>
   );

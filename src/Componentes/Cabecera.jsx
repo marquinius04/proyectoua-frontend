@@ -12,40 +12,36 @@ export const Cabecera = ({
   handleSignUpClick,
   handleSignInClick,
   handleLogoutClick,
+  inputValue,
+  onSearchChange,
+  onSearchSubmit,
 }) => {
-  const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
-  const handleSearchClick = () => {
-    if (searchText.trim() !== "") {
-      navigate(`/search?q=${encodeURIComponent(searchText)}`);
-    }
-  };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearchClick();
-    }
-  };
 
   return (
     <div className="header">
       <LogoArtRoomDefinitivo2 className="logo-art-room-definitivo-2-instance" />
       <div className="search-container">
-      <img
+        <img
           src="https://www.dropbox.com/scl/fi/ieaswykdv57270lwyk217/vector0.svg?rlkey=infc1esp7w5jleq4zlb80nr5p&st=f84l3uv2&raw=1"
           alt="Search Icon"
           className="search-icon"
-          onClick={handleSearchClick}
+          onClick={onSearchSubmit}
           style={{ cursor: "pointer" }}
         />
         <input
           type="text"
           placeholder="Search resources..."
           className="search-text"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          onKeyDown={handleKeyDown}
+          value={inputValue}
+          onChange={onSearchChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onSearchSubmit(e);
+            }
+          }}
         />
       </div>
 
