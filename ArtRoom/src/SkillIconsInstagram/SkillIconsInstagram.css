@@ -1,0 +1,20 @@
+.skill-icons-instagram,
+.skill-icons-instagram * {
+  box-sizing: border-box;
+}
+.skill-icons-instagram {
+  width: 41px;
+  height: 41px;
+  position: relative;
+  aspect-ratio: 1;
+}
+.skill-icons-instagram .group {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+}

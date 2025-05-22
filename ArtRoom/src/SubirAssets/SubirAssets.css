@@ -1,0 +1,410 @@
+/* Estilos generales */
+.p-gina-de-subir-assets {
+  background-color: #1a2118;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  font-family: "Inter-Regular", sans-serif;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.p-gina-de-subir-assets .subir-assets-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #1a2118;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.p-gina-de-subir-assets .div-izquierda {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  height: 80%;
+}
+
+.p-gina-de-subir-assets .div-derecha {
+  display: flex;
+  flex-direction: column;
+  background: #414c3e;
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
+  height: 80%;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.p-gina-de-subir-assets .main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #414c3e;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 5px;
+  min-height: 166px;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.p-gina-de-subir-assets .media-files {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #414c3e;
+  width: 100%;
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  height: auto; /* Ajusta la altura automáticamente */
+  margin-bottom: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  padding: 20px; /* Espaciado interno */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+  overflow: hidden; /* Evita que el contenido interno desborde */
+  text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.p-gina-de-subir-assets .media-files p {
+  font-size: 14px;
+  color: #ffffff;
+  word-wrap: break-word; /* Permite que el texto se ajuste a múltiples líneas */
+  max-width: 100%; /* Asegura que el texto no exceda el ancho del contenedor */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
+}
+
+.p-gina-de-subir-assets .media-files img {
+  width: 200px;
+  height: 200px;
+}
+
+.p-gina-de-subir-assets .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  gap: 10px;
+  background: #57c882;
+  color: #1a2118;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease, transform 0.2s ease;
+  height: 60px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.p-gina-de-subir-assets .input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.p-gina-de-subir-assets .input-label {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  width: 20%; /* Ancho fijo para pantallas grandes */
+  text-align: right;
+  word-wrap: break-word; /* Permite que el texto se ajuste a múltiples líneas */
+  overflow: hidden; /* Oculta cualquier contenido que exceda el contenedor */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
+  white-space: normal; /* Permite que el texto se divida en varias líneas */
+}
+
+.p-gina-de-subir-assets .input-field {
+  background: #2a3725;
+  color: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #97979b;
+  padding: 10px;
+  width: 65%; /* Ancho fijo para pantallas grandes */
+  box-sizing: border-box;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tags ocupen varias líneas si es necesario */
+  gap: 10px; /* Espaciado entre las tags */
+  justify-content: center; /* Centra las tags dentro del contenedor */
+  max-width: 100%; /* Asegura que el contenedor no exceda su tamaño */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+  padding: 10px;
+}
+
+.p-gina-de-subir-assets .tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #1a2118;
+  background: #4d4d51;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px 10px;
+  max-width: 150px; /* Limita el ancho máximo de cada tag */
+  height: auto;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Oculta el contenido que exceda el tamaño de la tag */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
+  white-space: wrap; /* Evita que el texto se divida en varias líneas */
+  font-size: 14px;
+  font-weight: bold;
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+.p-gina-de-subir-assets .media-rectangle {
+  background-color: #242e22;
+  border-radius: 10px;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  max-width: 300px; /* Tamaño máximo del cuadrado */
+  margin-bottom: 5px;
+  aspect-ratio: 1 / 1; /* Mantiene la relación de aspecto 1:1 para que sea un cuadrado */
+  padding: 10px; /* Espaciado interno */
+  box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+  overflow: hidden; /* Evita que el contenido interno desborde */
+  display: flex; /* Asegura que el contenido interno se alinee correctamente */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+.p-gina-de-subir-assets .media-rectangle img {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  object-fit: cover; /* Asegura que la imagen mantenga sus proporciones y llene el contenedor */
+  border-radius: 10px; /* Mantiene los bordes redondeados como el contenedor */
+}
+
+.add-tag-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-tag-select {
+  background: #2a3725;
+  color: #ffffff;
+  border: 2px solid #97979b;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  appearance: none;
+}
+
+.add-tag-select:focus {
+  outline: none;
+  border-color: #57c882;
+}
+
+.remove-tag-button {
+  background: none;
+  border: none;
+  color: #ff5c5c;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-tag-button:hover {
+  color: #ff0000;
+}
+
+.file-input {
+  display: none;
+}
+
+.p-gina-de-subir-assets .media-upload-label {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* Ajusta el tamaño del ícono */
+  height: 150px; /* Ajusta el tamaño del ícono */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  max-height: 100%; /* Asegura que no exceda la altura del contenedor */
+}
+
+.p-gina-de-subir-assets .media-upload-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.uploaded-file-preview {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.uploaded-file-name {
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.p-gina-de-subir-assets .button .upload-icon {
+  width: 32px; /* Ajusta el ancho del ícono */
+  height: 32px; /* Ajusta la altura del ícono */
+  object-fit: contain; /* Asegura que el ícono mantenga su proporción */
+}
+
+/* Media Queries para Responsividad */
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+  .p-gina-de-subir-assets .subir-assets-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .p-gina-de-subir-assets .div-izquierda,
+  .p-gina-de-subir-assets .div-derecha {
+    width: 90%;
+    height: auto;
+  }
+
+  .p-gina-de-subir-assets .media-files img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .p-gina-de-subir-assets .input-label {
+    font-size: 18px;
+  }
+
+  .p-gina-de-subir-assets .input-field {
+    font-size: 14px;
+  }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .p-gina-de-subir-assets .subir-assets-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .p-gina-de-subir-assets .div-izquierda,
+  .p-gina-de-subir-assets .div-derecha {
+    width: 100%;
+    height: auto;
+  }
+
+  .p-gina-de-subir-assets .media-files img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .p-gina-de-subir-assets .button {
+    font-size: 16px;
+    height: 50px;
+  }
+
+  .p-gina-de-subir-assets .input-label {
+    font-size: 16px;
+  }
+
+  .p-gina-de-subir-assets .input-field {
+    font-size: 12px;
+  }
+}
+
+/* Pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+  .p-gina-de-subir-assets .media-upload-label {
+    width: 64px;
+    height: 64px;
+  }
+
+  .p-gina-de-subir-assets .media-files img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .p-gina-de-subir-assets .media-files p {
+    display: none;
+  }
+
+  .p-gina-de-subir-assets .button {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .p-gina-de-subir-assets .input-container {
+    flex-direction: column; /* Cambia a disposición vertical */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    gap: 5px; /* Reduce el espacio entre los elementos */
+  }
+
+  .p-gina-de-subir-assets .input-label {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 16px; /* Reduce el tamaño de la fuente */
+  }
+
+  .p-gina-de-subir-assets .input-field {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    font-size: 14px; /* Reduce el tamaño de la fuente */
+  }
+
+  /* Agregar margen entre main-info y media-files */
+  .p-gina-de-subir-assets .main-info {
+    margin-bottom: 10px; /* Margen inferior para separar de media-files */
+  }
+
+  .p-gina-de-subir-assets .media-files {
+    margin-top: 10px; /* Margen superior para mayor separación */
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 260px) {
+  .div-derecha h1 {
+    display: none;
+  }
+
+  .p-gina-de-subir-assets .button {
+    font-size: 10px;
+    height: 40px;
+  }
+
+  .p-gina-de-subir-assets .tag {
+    font-size: 10px; /* Reduce aún más el tamaño de la fuente */
+    padding: 2px 4px; /* Reduce el padding */
+    gap: 3px; /* Reduce el espacio entre el texto y el botón de eliminar */
+  }
+
+  .p-gina-de-subir-assets .tags-container {
+    padding: 2px; /* Reduce el padding del contenedor de tags */
+  }
+
+  .p-gina-de-subir-assets .remove-tag-button {
+    font-size: 10px; /* Ajusta el tamaño del botón de eliminar */
+  }
+}

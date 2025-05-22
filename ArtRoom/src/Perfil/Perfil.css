@@ -1,0 +1,424 @@
+@import "../shared.css";
+
+.dashboard-usuario,
+.dashboard-usuario * {
+  box-sizing: border-box;
+}
+.dashboard-usuario {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 700;
+}
+.logo-art-room-definitivo-22 {
+  order: -2;
+}
+.dashboard-usuario .button {
+  width: 75%;
+  white-space: normal;
+  word-wrap: break-word;
+  margin: 10px;
+}
+.dashboard-usuario .dashboard-izq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #414c3e;
+  width: 60%;
+}
+.dashboard-usuario .dashboard-izq .dashboard-historial {
+  display: flex;
+  flex-direction: column;
+  background: #414c3e;
+  width: 100%;
+  padding: 10px;
+}
+.dashboard-usuario .dashboard-izq .dashboard-perfil {
+  display: flex;
+  flex-direction: column;
+  background: #414c3e;
+  width: 100%;
+  padding: 10px;
+}
+.dashboard-usuario .dashboard-izq .dashboard-perfil .arriba-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #414c3e;
+  width: 100%;
+  padding: 10px;
+}
+.dashboard-usuario .dashboard-izq .dashboard-perfil .profile-photo {
+  width: 25%;
+  max-width: 128px;
+  min-width: 64px;
+  height: auto;
+}
+.dashboard-usuario .dashboard-dcha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #414c3e;
+  width: 20%;
+  height: 100%;
+  justify-content: space-evenly;
+}
+.dashboard-usuario .dashboard-dcha .delete-account {
+  color: #1A2118;
+  background-color: #b80f0f;
+  margin: 10px;
+}
+.dashboard-usuario .change-password {
+  color: #ffffff;
+  text-align: left;
+  margin: 10px;
+}
+.dashboard-usuario .add-your-social-networks {
+  color: #ffffff;
+  text-align: left;
+  margin: 10px;
+}
+.dashboard-usuario .divisory-line {
+  background: #97979b;
+  width: 50%;
+  height: 3px;
+  border-radius: 10px;
+  margin-top: 1lh;
+  margin-bottom: 1lh;
+}
+.dashboard-usuario a {
+  color: #0f130e;
+  font-weight: 700;
+}
+.dashboard-usuario .assets-grid {
+  display: grid;
+  grid-auto-rows: 15rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); /* Tres columnas */
+  gap: 1rem; /* Espaciado entre los elementos */
+}
+.dashboard-usuario .asset-image {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.dashboard-usuario .asset-title {
+  font-weight: bold;
+  margin-top: 5px;
+}
+.dashboard-usuario .asset-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+.dashboard-usuario .asset-likes,
+.dashboard-usuario .asset-views {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dashboard-usuario .stat-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+  justify-content: center;
+  gap: 15px; /* Espaciado entre los elementos */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+}
+
+.password-form input {
+  color:white;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: row; /* Ensure buttons are in a row */
+  gap: 1rem;
+  justify-content: center; /* Center align the buttons */
+}
+
+.form-buttons .button {
+  margin: 0px;
+}
+
+.password-form button {
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.button.cancel-button {
+  background-color: #b80f0f;
+  color: black;
+  border: none;
+}
+
+.social-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+  justify-content: center;
+}
+
+.social-input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.social-input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  color: white;
+  width: 100%;
+}
+
+.social-add-button {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #61cc5d;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.social-add-button:hover {
+  background-color: #218838;
+}
+
+.social-button-row {
+  display: flex;
+  flex-direction: row; /* Ensure buttons are in a row */
+  gap: 1rem;
+  justify-content: center; /* Center align the buttons */
+}
+
+.social-save-button,
+.social-cancel-button {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.social-save-button {
+  background-color: #61cc5d;
+}
+
+.social-save-button:hover {
+  background-color: #218838;
+}
+
+.social-cancel-button {
+  background-color: #6c757d;
+}
+
+.social-cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.social-icons-under-profile {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-link-icon {
+  font-size: 1.5rem; /* Tamaño de icono, opcional */
+  margin-top: 15px;
+}
+
+.no-assets-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5; /* Fondo claro */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px; /* Ancho máximo */
+}
+
+.no-assets-message {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.upload-button {
+  background-color: #57c882;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.upload-button:hover {
+  background-color: #4a6e58;
+  transform: scale(1.05);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .no-assets-container {
+    padding: 15px;
+    max-width: 90%; /* Ajusta el ancho en pantallas más pequeñas */
+  }
+
+  .no-assets-message {
+    font-size: 16px; /* Reduce el tamaño del texto */
+  }
+
+  .upload-button {
+    font-size: 14px; /* Reduce el tamaño del botón */
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .no-assets-container {
+    padding: 10px;
+  }
+
+  .no-assets-message {
+    font-size: 14px;
+  }
+
+  .upload-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 1302px) {
+  .dashboard-usuario .assets-grid .asset-item:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 874px) {
+  .dashboard-usuario .assets-grid .asset-item:nth-child(2) {
+    display: none;
+  }
+  .dashboard-usuario .dashboard-izq .dashboard-historial {
+    align-items: center;
+  }
+}
+@media (max-width: 800px) {
+  .search-container {
+    width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  .social-button-row {
+    gap: 0px;
+  }
+}
+@media (max-width: 500px) {
+  .search-container {
+    width: 50%;
+  }
+  .dashboard-usuario .asset-item {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+
+  .dashboard-usuario .assets-grid {
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); /* Reduce el tamaño de las columnas */
+    gap: 0.5rem; /* Reduce el espaciado entre los elementos */
+  }
+}
+@media (max-width: 400px) {
+  .dashboard-usuario .assets-grid .asset-item:nth-child(1) {
+    display: none;
+  }
+  .dashboard-usuario {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dashboard-usuario .dashboard-izq .dashboard-historial {
+    padding: 0px;
+  }
+  .dashboard-usuario .dashboard-dcha {
+    width: 60%;
+    height: 100%;
+  }
+
+  .password-form {
+    padding: 15px;
+    max-width: 90%; /* Ocupa el 90% del ancho de la pantalla */
+  }
+
+  .form-buttons {
+    flex-direction: column; /* Cambia a diseño en columna */
+    gap: 10px;
+    align-items: center;
+  }
+
+  .password-form button {
+    width: 100%; /* Botones ocupan todo el ancho */
+  }
+
+  .social-input-group {
+    flex-direction: column; /* Cambia a diseño en columna */
+    gap: 10px;
+  }
+  
+  .social-input {
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+  
+  .social-add-button {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    margin-left: 0px;
+  }
+  
+  .social-button-row {
+    flex-direction: column; /* Cambia a diseño en columna */
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .social-save-button,
+  .social-cancel-button {
+    font-size: 12px;
+    width: 100%; /* Botones ocupan todo el ancho */
+  }
+
+  .dashboard-usuario .no-assets-container {
+    display: none;
+  }
+}

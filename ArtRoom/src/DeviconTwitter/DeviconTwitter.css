@@ -1,0 +1,11 @@
+.devicon-twitter,
+.devicon-twitter * {
+  box-sizing: border-box;
+}
+.devicon-twitter {
+  width: 37px;
+  height: 37px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}

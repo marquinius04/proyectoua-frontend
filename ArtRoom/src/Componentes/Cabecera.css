@@ -1,0 +1,22 @@
+.logout-button {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin bordes */
+    padding: 0; /* Sin padding adicional */
+    transition: transform 0.2s ease; /* Transición para el efecto de zoom */
+}
+
+.logout-button img {
+    width: 60px; /* Tamaño similar al botón de upload */
+    height: 60px;
+    object-fit: contain; /* Ajusta la imagen al contenedor */
+    filter: brightness(0) saturate(100%) hue-rotate(0deg) invert(21%) sepia(100%) saturate(7450%) hue-rotate(-1deg) brightness(80%) contrast(100%);
+}
+
+.logout-button:hover img, .upload-icon:hover img, .user-icon:hover img {
+    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+    cursor: pointer;
+}
+
+.logout-button:active img, .upload-icon:active img, .user-icon:active img {
+    transform: scale(0.9); /* Efecto de clic */
+}

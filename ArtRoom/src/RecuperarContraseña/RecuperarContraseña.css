@@ -1,0 +1,294 @@
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar,
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar * {
+  box-sizing: border-box;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar {
+  background: #ffffff;
+  height: 1080px;
+  position: relative;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .rectangle-31 {
+  background: #1a2118;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .rectangle-32 {
+  background: linear-gradient(
+    0.22deg,
+    rgba(40, 51, 36, 1) 0%,
+    rgba(92, 150, 71, 1) 100%
+  );
+  border-radius: 16px;
+  width: 660px;
+  height: 500px;
+  position: absolute;
+  left: 630px;
+  top: 271px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar
+  .logo-art-room-definitivo-9-instance {
+  position: absolute !important;
+  left: 905px !important;
+  top: 271px !important;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .rectangle-35 {
+  background: #2a3725;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #97979b;
+  border-width: 2px;
+  width: 440px;
+  height: 57px;
+  position: absolute;
+  left: 740px;
+  top: 566px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .email {
+  color: #c2c2c2;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 740px;
+  top: 531px;
+  width: 231px;
+  height: 24px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .your-email-com {
+  color: #97979b;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 768px;
+  top: 581px;
+  width: 264px;
+  height: 28px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .frame-2 {
+  width: 440px;
+  height: 55px;
+  position: absolute;
+  left: 740px;
+  top: 673px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .rectangle-20 {
+  background: #62ffa1;
+  border-radius: 8px;
+  width: 440px;
+  height: 55px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .reset-password {
+  color: #1a2118;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 94px;
+  top: 14px;
+  width: 251px;
+  height: 28px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .rectangle-36 {
+  background: #37562b;
+  border-radius: 20px;
+  width: 563px;
+  height: 87px;
+  position: absolute;
+  left: 689px;
+  top: 412px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar
+  .to-recover-your-password-fill-in-the-box-below-you-will-receive-an-email-with-the-link-to-set-your-new-password {
+  color: #dedede;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 697px;
+  top: 417px;
+  width: 526px;
+  height: 78px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .stark-annotations-id-14-68 {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar
+  .to-recover-your-password-fill-in-the-box-below-you-will-receive-an-email-with-the-link-to-set-your-new-password-id-14-90 {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 685px;
+  top: 405px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .accessible-name {
+  flex-shrink: 0;
+  width: 38px;
+  height: 24px;
+  position: static;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .badge {
+  background: #381fd1;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #fcfcfc;
+  border-width: 2px;
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.08),
+    0px 0px 2px 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .number {
+  color: #fcfcfc;
+  text-align: center;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .accessible-name-icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar
+  .logo-art-room-definitivo-9-id-22-4 {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 893px;
+  top: 259px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .focus-order {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: static;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .badge2 {
+  background: #381fd1;
+  border-radius: 16px;
+  border-style: solid;
+  border-color: #fcfcfc;
+  border-width: 2px;
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.08),
+    0px 0px 2px 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .your-email-com-id-14-83 {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 756px;
+  top: 569px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .accessible-name2 {
+  flex-shrink: 0;
+  width: 40px;
+  height: 24px;
+  position: static;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .badge3 {
+  background: #381fd1;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #fcfcfc;
+  border-width: 2px;
+  padding: 0px 8px 0px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  position: absolute;
+  left: 28px;
+  top: 0px;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.08),
+    0px 0px 2px 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .accessible-name-icon2 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .frame-2-id-14-94 {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 728px;
+  top: 661px;
+}
+.p-gina-de-recuperaci-n-de-contrase-a-sin-enviar .accessible-name-icon3 {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+}
+
+.advice-text {
+  color: #dedede;
+  width: 50%;
+}
+
+/* nested override styles */

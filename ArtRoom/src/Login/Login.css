@@ -1,0 +1,206 @@
+.p-gina-de-login,
+.p-gina-de-login * {
+  box-sizing: border-box;
+}
+
+.p-gina-de-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #1A2118;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(0.22deg, rgba(40, 51, 36, 1) 0%, rgba(92, 150, 71, 1) 100%);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px; /* Tamaño máximo para pantallas grandes */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Media query para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+  
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  
+}
+
+/* Header */
+.p-gina-de-login .login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 150%; /* Espaciado entre el logo y la línea divisoria */
+  width: inherit;
+}
+
+/* Línea divisoria */
+.p-gina-de-login .divisory-line {
+  background: #97979b;
+  width: 85%;
+  height: 3px;
+  border-radius: 10px;
+  margin-top: 1lh;
+  margin-bottom: 1lh;
+}
+
+/* Campos de entrada */
+.p-gina-de-login .input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-gina-de-login .input-field .login-label {
+  color: #c2c2c2;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.p-gina-de-login .input-field .login-input {
+  background: #2a3725;
+  width: 400px;
+  height: 60px;
+  color: #ffffff;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #97979b;
+  border-width: 2px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Texto de ejemplo */
+.p-gina-de-login .example-text {
+  color: #97979b;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Texto de "Forgot your password" */
+.p-gina-de-login .forgot-your-password {
+  color: #228fc3;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-top: 20px;
+}
+
+.p-gina-de-login .logo-art-room-definitivo-22 img {
+  width: 100%;
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: contain; /* Escala la imagen para que quepa dentro del contenedor sin recortarla */
+}
+
+/* Texto de "Sign up here" */
+.p-gina-de-login a {
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.p-gina-de-login .sign-up-text:hover {
+  cursor: pointer;
+}
+
+/* Texto de "Don't have an account?" */
+.p-gina-de-login .sign-up-redirect {
+  color: #97979b;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.p-gina-de-login .login-button-instance {
+  display: flex; /* Activa Flexbox */
+  align-items: center; /* Alinea verticalmente el contenido */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  gap: 10px; /* Espaciado entre el texto y el ícono */
+  background: #57c882; /* Fondo verde */
+  color: #1A2118; /* Texto blanco */
+  border: none;
+  border-radius: 6px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: bold; /* Texto en negrita */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  width: 150px; /* Ancho fijo para ambos botones */
+  text-align: center; /* Centra el texto */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que exceda el ancho del botón */
+  text-overflow: ellipsis; /* Agrega "..." si el texto es demasiado largo */
+  transition: background 0.3s ease, transform 0.2s ease; /* Animación para hover */
+  height: 50px;
+}
+
+.p-gina-de-login .login-button-instance:hover {
+  background: #4a6e58; /* Fondo verde oscuro al pasar el cursor */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el cursor */
+}
+
+.advice-text {
+  color: lightgray;
+  width: 80%;
+  background-color: #2a3725;
+  text-align: left;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.p-gina-de-login .sign-in-container {
+  padding: 1lh;
+  width: 100%;
+}
+
+.p-gina-de-login .sign-in-button {
+  width: 80%;
+  max-width: 128px;
+}
+
+.p-gina-de-login .sign-in-text {
+  font-size: clamp(12px, 2.5vw, 16px); /* Ajusta el tamaño de fuente entre 12px y 16px dependiendo del ancho de la pantalla */
+}
+
+.login-container p {
+  text-align: center;
+}
+
+/* Media Queries para responsividad */
+
+/* Pantallas medianas (hasta 800px) */
+@media (max-width: 800px) {
+  .p-gina-de-login .login-header {
+    gap: 50%; /* Ajusta el espaciado entre el logo y la línea divisoria */
+  }
+}
+
+/* Pantallas pequeñas (hasta 500px) */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 20px; /* Reduce aún más el padding */
+    max-width: 90%; /* Usa un ancho relativo para adaptarse mejor */
+  }
+
+  .p-gina-de-login .login-header {
+    gap: 30%; /* Ajusta el espaciado entre el logo y la línea divisoria */
+  }
+}

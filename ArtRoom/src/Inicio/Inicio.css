@@ -1,0 +1,384 @@
+/* General Styles */
+html,
+body {
+  height: 100%; /* Asegura que el html y body ocupen toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina padding por defecto */
+}
+
+.p-gina-de-inicio-no-logueado,
+.p-gina-de-inicio-no-logueado * {
+  box-sizing: border-box;
+}
+
+.p-gina-de-inicio-no-logueado {
+  min-height: 100%; /* Asegura que el contenedor principal ocupe al menos toda la altura */
+  background: #1a2118; /* Fondo verde oscuro */
+  font-family: "Inter-Regular", sans-serif;
+  color: #ffffff; /* Texto blanco por defecto */
+  display: flex;
+  flex-direction: column; /* Permite organizar el contenido verticalmente */
+}
+
+/* Header */
+.header {
+  background: #0f130e;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.p-gina-de-inicio-no-logueado .logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  width: 100%;
+  max-width: 60%;
+  height: 50px;
+  align-items: center;
+  justify-content: left;
+  background: #4a6e58;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: text;
+  transition: background 0.3s ease;
+}
+
+.search-container:hover {
+  background: #57c882;
+}
+
+.p-gina-de-inicio-no-logueado .search-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.p-gina-de-inicio-no-logueado .search-icon:hover {
+  cursor: pointer;
+}
+
+/* Contenedor de los botones de autenticación */
+.p-gina-de-inicio-no-logueado .auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.p-gina-de-inicio-no-logueado .sign-up-button-instance,
+.p-gina-de-inicio-no-logueado .sign-in-button-instance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #57c882;
+  color: #1A2118;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease, transform 0.2s ease;
+  height: 50px;
+}
+
+.p-gina-de-inicio-no-logueado .sign-up-button-instance {
+  background: #4D4D51;
+  color: #ffffff;
+}
+
+/* Hover para los botones */
+.p-gina-de-inicio-no-logueado .sign-up-button-instance:hover,
+.p-gina-de-inicio-no-logueado .sign-in-button-instance:hover {
+  background: #4a6e58;
+  transform: scale(1.05);
+}
+
+.p-gina-de-inicio-no-logueado .icon {
+  width: 40px;
+  height: 40px;
+  background: #4a6e58;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* Recommended Assets */
+.p-gina-de-inicio-no-logueado .recommended-assets {
+  padding: 20px 50px;
+}
+
+.p-gina-de-inicio-no-logueado .recommended-assets h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.p-gina-de-inicio-no-logueado .assets-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  grid-template-rows: repeat(2, auto); /* 2 filas */
+  gap: 20px; /* Espaciado entre elementos */
+}
+
+.assets-grid > * {
+  width: 100%; /* Asegura que los elementos internos se ajusten */
+  height: auto;
+}
+
+.asset-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto; /* Ajusta según sea necesario */
+  background: #414c3e;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.asset-item img {
+  width: 100%;
+  max-height: 180px; /* Ajusta según sea necesario */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.p-gina-de-inicio-no-logueado .asset-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.p-gina-de-inicio-no-logueado .asset-stats {
+  display: flex;
+  justify-content: space-evenly; /* Alinea los likes y views a los extremos */
+  align-items: center;
+  margin-top: 2em;
+  align-self: center;
+  width: 100%;
+}
+
+.p-gina-de-inicio-no-logueado .asset-likes,
+.p-gina-de-inicio-no-logueado .asset-views {
+  display: flex;
+  align-items: center;
+}
+
+.p-gina-de-inicio-no-logueado .stat-icon {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 0px;
+}
+
+/* Categories */
+
+.p-gina-de-inicio-no-logueado .category-item {
+  background: #4a6e58;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Filtros */
+
+.p-gina-de-inicio-no-logueado .filters-grid {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta las columnas */
+  padding: 15px;
+  gap: 15px; /* Espaciado entre los filtros */
+  background-color: #57c882;
+  border-radius: 15px;
+  overflow: hidden; /* Evita que los elementos se salgan del contenedor */
+}
+
+.p-gina-de-inicio-no-logueado .filter-item {
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  /* Evitar que el texto se desborde */
+  word-wrap: break-word; /* Fuerza el salto de línea si es necesario */
+  overflow-wrap: normal; /* Compatibilidad adicional */
+  white-space: wrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Evita que el texto se salga del contenedor */
+  text-overflow: ellipsis; /* Opcional: agrega puntos suspensivos si el texto es demasiado largo */
+}
+
+.p-gina-de-inicio-no-logueado .filter-item:hover {
+  background: #000000; /* Fondo verde claro al pasar el cursor */
+  color: #ffffff;
+}
+
+/* Categorías */
+.p-gina-de-inicio-no-logueado .categories-link {
+  text-align: center;
+  align-content: center;
+  height: 80px;
+  width: auto;
+  margin: 20px 50px;
+  color: #000000; /* Texto blanco */
+  font-size: clamp(16px, 5vw, 32px); /* Tamaño de fuente adaptable */
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #57c882;
+  border-radius: 15px;
+}
+
+.p-gina-de-inicio-no-logueado .categories-link:hover {
+  background: #000000; /* Fondo verde claro al pasar el cursor */
+  color: #ffffff;
+}
+
+/* Trending Assets */
+.p-gina-de-inicio-no-logueado .trending-assets {
+  padding: 20px 50px;
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets .assets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 20px; /* Espaciado entre elementos */
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets .asset-item {
+  background: #414c3e;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets .asset-item img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets .asset-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.p-gina-de-inicio-no-logueado .trending-assets .asset-stats {
+  display: flex;
+  justify-content: space-between; /* Alinea los likes y views a los extremos */
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Media Queries para responsividad de Inicio */
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 900px) {
+  .p-gina-de-inicio-no-logueado .assets-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 800px) {
+  .p-gina-de-inicio-no-logueado .assets-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 600px) {
+  .p-gina-de-inicio-no-logueado .assets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 500px) {
+  .p-gina-de-inicio-no-logueado .assets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .p-gina-de-inicio-no-logueado .filters-grid {
+    display: none;
+  }
+
+  .p-gina-de-inicio-no-logueado .trending-assets .assets-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+
+  .p-gina-de-inicio-no-logueado .trending-assets .asset-title {
+    font-size: 16px;
+  }
+
+  .p-gina-de-inicio-no-logueado .sign-up-button {
+    width: 50px;
+  }
+
+  .p-gina-de-inicio-no-logueado .sign-in-button {
+    width: 50px;
+  }
+
+  .p-gina-de-inicio-no-logueado .sign-up-text {
+    display: none;
+  }
+
+  .p-gina-de-inicio-no-logueado .sign-in-text {
+    display: none;
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 400px) {
+  .p-gina-de-inicio-no-logueado .assets-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .p-gina-de-inicio-no-logueado .trending-assets .assets-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 220px) {
+  .p-gina-de-inicio-no-logueado .recommended-assets {
+    padding: 0px;
+  }
+
+  .p-gina-de-inicio-no-logueado .categories-link {
+    margin: 0px;
+  }
+
+  .p-gina-de-inicio-no-logueado .trending-assets {
+    padding: 0px;
+  }
+}

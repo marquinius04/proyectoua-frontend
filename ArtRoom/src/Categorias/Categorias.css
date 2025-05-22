@@ -1,0 +1,51 @@
+@import "../shared.css";
+
+.categories-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.asset-image {
+  width: 100%; /* Asegura que la imagen ocupe el ancho del contenedor */
+  height: 223px; /* Mantiene la proporción de la imagen */
+  border-radius: 5px;
+  object-fit: cover; /* Asegura que la imagen se recorte si es necesario */
+}
+
+.login-container .card {
+  background-color: transparent;
+  width: 100%;
+  min-width: 100px;
+}
+
+.login-container .button {
+  font-size: clamp(12px, 2.5vw, 16px); /* Ajusta el tamaño de fuente entre 12px y 16px dependiendo del ancho de la pantalla */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media (max-width: 800px) {
+  .grid-4-columns {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 500px) {
+  .background .sign-in-text {
+      display: none;
+  }
+
+  .background .sign-in-button {
+    width: 50px;
+  }
+
+  .background .sign-up-text {
+    display: none;
+  }
+
+  .background .sign-up-button {
+    width: 50px;
+  }
+}

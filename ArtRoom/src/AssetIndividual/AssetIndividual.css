@@ -1,0 +1,328 @@
+html, body {
+  background-color: #1a2118;
+}
+
+.asset-content {
+  display: flex;
+  flex-direction: column; /* Organiza las filas en columna */
+  gap: 20px;
+  width: 100%;
+  max-width: 1700px;
+  margin: 20px auto;
+  background-color: #414c3e;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+.asset-row {
+  display: flex;
+  flex-direction: row; /* Primera fila: dos columnas */
+  gap: 20px;
+}
+
+.asset-info,
+.asset-related {
+  flex: 1; /* Cada columna ocupa la mitad del ancho */
+}
+
+.asset-individual {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a2118;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%; /* Asegura que no exceda el contenedor */
+  max-width: 100%; /* Limita el ancho máximo */
+  box-sizing: border-box; /* Incluye padding y bordes en el ancho total */
+  overflow-wrap: break-word; /* Ajusta palabras largas */
+}
+
+.asset-info .asset-image {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 800px; /* Limita el tamaño máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px; /* Bordes redondeados */
+  object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+}
+
+.asset-info .asset-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 100%; /* Limita el ancho máximo al contenedor */
+  box-sizing: border-box; /* Incluye padding y bordes en el ancho total */
+  gap: 10px; /* Añade espacio entre los elementos */
+  overflow-wrap: break-word; /* Ajusta palabras largas */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas si es necesario */
+}
+
+.asset-info .asset-stats .stat-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain; /* Asegura que los íconos se ajusten correctamente */
+}
+
+.asset-info .asset-stats h1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: #ffffff; /* Texto blanco */
+  margin: 0;
+  text-align: center; /* Centra el texto */
+  word-wrap: break-word; /* Ajusta palabras largas */
+  max-width: 100%; /* Limita el ancho máximo */
+}
+
+.asset-info p {
+  font-size: 16px;
+  color: #ffffff; /* Texto blanco */
+  text-align: center;
+  margin: 0;
+  line-height: 1.5; /* Mejora la legibilidad */
+}
+
+.asset-info .download-button {
+  background-color: #57c882; /* Botón verde */
+  color: #1a2118; /* Texto oscuro */
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none; /* Elimina el subrayado */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 6px; /* Bordes redondeados */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5); /* Sombra para el botón */
+  transition: background 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  display: inline-block;
+  text-align: center;
+}
+
+.asset-info .download-button:hover {
+  background-color: #45a96a; /* Color más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+.asset-related {
+  display: flex;
+  flex-direction: column; /* Organiza los proyectos en columna */
+  gap: 20px; /* Espaciado entre los elementos */
+  background-color: #2a3725; /* Fondo oscuro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5); /* Sombra */
+  height: 100%; /* Ocupa toda la altura disponible */
+}
+
+.asset-related h2 {
+  font-size: 24px; /* Aumenta el tamaño del título */
+  color: #ffffff; /* Texto blanco */
+  margin: 0 0 20px 0; /* Espaciado inferior */
+  text-align: center;
+}
+
+.related-assets {
+  display: flex;
+  flex-direction: column; /* Organiza los proyectos en columna */
+  gap: 20px; /* Espaciado entre los proyectos */
+  flex: 1; /* Permite que los assets ocupen el espacio restante */
+}
+
+.related-asset-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2a3725; /* Fondo oscuro para coincidir con el resto */
+  border: 1px solid #414c3e; /* Borde oscuro */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.related-asset-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.related-asset-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 2px solid #57c882; /* Borde verde para destacar */
+}
+
+.related-asset-info {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.related-asset-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff; /* Texto blanco */
+}
+
+.related-asset-user {
+  font-size: 0.9rem;
+  color: #c9d1c9; /* Texto gris claro */
+  margin-top: 4px;
+}
+
+.related-asset-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.related-asset-likes,
+.related-asset-views {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #c9d1c9; /* Texto gris claro */
+}
+
+.stat-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.comments-section {
+  background-color: #2a3725;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  width: 100%; /* Asegura que no exceda el contenedor */
+  max-width: 100%; /* Limita el ancho máximo */
+  box-sizing: border-box; /* Incluye padding y bordes en el ancho total */
+  overflow-wrap: break-word; /* Ajusta palabras largas */
+}
+
+.comments-section h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 16px 0; /* Elimina márgenes laterales */
+  text-align: center;
+  word-wrap: break-word; /* Asegura que el texto largo se ajuste */
+  max-width: 100%; /* Limita el ancho al contenedor */
+  overflow-wrap: break-word; /* Ajusta palabras largas */
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #414c3e;
+  background-color: #1a2118;
+  color: #ffffff;
+  font-size: 1rem;
+  resize: none;
+}
+
+.comment-input::placeholder {
+  color: #c9d1c9;
+}
+
+.comment-submit-button {
+  align-self: flex-end; /* Mantiene el botón alineado a la derecha */
+  background-color: #57c882;
+  color: #1a2118;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  max-width: 100%; /* Asegura que no exceda el contenedor */
+  box-sizing: border-box; /* Incluye padding y bordes en el ancho total */
+}
+
+.comment-submit-button:hover {
+  background-color: #45a96a;
+  transform: scale(1.05);
+}
+
+.comments-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-item {
+  background-color: #414c3e;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.comment-user {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #57c882;
+  margin-bottom: 5px;
+}
+
+.comment-text {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.asset-tags {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.asset-tags h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tag-item {
+  background-color: #57c882; /* Fondo verde */
+  color: #1a2118; /* Texto oscuro */
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.tag-item:hover {
+  background-color: #45a96a; /* Color más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+@media (max-width: 468px) {
+  .asset-related {
+    display: none;
+  }
+}

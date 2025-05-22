@@ -1,0 +1,11 @@
+.logos-youtube-icon,
+.logos-youtube-icon * {
+  box-sizing: border-box;
+}
+.logos-youtube-icon {
+  width: 53px;
+  height: 37px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 53/37;
+}
