@@ -361,12 +361,12 @@ export const Perfil = ({ className, ...props }) => {
                   <div
                     key={asset._id}
                     className="asset-item"
-                    onClick={() => handleAssetClick(asset._id)}
                     style={{ cursor: "pointer" }}
                   >
                     <img
                       src={asset.previewUrl || asset.archivoUrl}
                       alt={asset.titulo}
+                      onClick={() => handleAssetClick(asset._id)}
                       className="asset-image"
                     />
                     <div className="asset-info">
