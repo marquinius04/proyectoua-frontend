@@ -318,6 +318,9 @@ export const Perfil = ({ className, ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
 
       <div className="dashboard-usuario">

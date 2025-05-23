@@ -205,6 +205,9 @@ export const SubirAssets = ({ className, ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
 
       <div className="subir-assets-container">

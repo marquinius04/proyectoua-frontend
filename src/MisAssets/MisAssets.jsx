@@ -73,6 +73,10 @@ export const MisAssets = () => {
         handleProfileClick={handleProfileClick}
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
+        handleLogoutClick={handleLogoutClick}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
 
       {/* Contenedor principal */}

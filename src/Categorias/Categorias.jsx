@@ -78,6 +78,9 @@ export const Categorias = ({ className, ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
 
       <h1 className="categories-title">Categories</h1>

@@ -197,6 +197,9 @@ export const AssetIndividual = ({ className = "", ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
+        inputValue={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
       <div className="asset-content">
         {/* Primera fila: Información del asset y proyectos relacionados */}
