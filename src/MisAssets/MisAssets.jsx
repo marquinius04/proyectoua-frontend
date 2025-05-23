@@ -9,6 +9,35 @@ export const MisAssets = () => {
   const [error, setError] = useState(null); // Estado para manejar errores
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
+
+  // Función que actualiza searchQuery y la URL con navigate
+  const onSearchChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSearchSubmit = () => {
+    const trimmedValue = inputValue.trim();
+
+    setSearchQuery(trimmedValue);
+
+    const params = new URLSearchParams(); // <-- Empezamos desde cero
+    if (trimmedValue !== "") {
+      params.set("q", trimmedValue);
+    }
+
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+
+    // Limpiamos los filtros seleccionados
+    setCategoriasSeleccionadas([]);
+    setTiposSeleccionados([]);
+  };
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   const handleSignInClick = () => {
     navigate("/login"); // Redirige a la página de Login

@@ -39,6 +39,29 @@ export const SubirAssets = ({ className, ...props }) => {
   const [uploadedFileName, setUploadedFileName] = useState(""); // Estado para almacenar el nombre del archivo subido
   const [thumbnailFile, setThumbnailFile] = useState(null); // Estado para almacenar la URL del thumbnail
   const [thumbnailFileName, setThumbnailFileName] = useState(""); // Estado para almacenar el nombre del thumbnail
+  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
+
+  // Función que actualiza searchQuery y la URL con navigate
+  const onSearchChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSearchSubmit = () => {
+    const trimmedValue = inputValue.trim();
+
+    setSearchQuery(trimmedValue);
+
+    const params = new URLSearchParams(); // <-- Empezamos desde cero
+    if (trimmedValue !== "") {
+      params.set("q", trimmedValue);
+    }
+
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+
+    // Limpiamos los filtros seleccionados
+    setCategoriasSeleccionadas([]);
+    setTiposSeleccionados([]);
+  };
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value); // Actualiza la categoría seleccionada

@@ -17,6 +17,30 @@ export const Categorias = ({ className, ...props }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
+
+  // Función que actualiza searchQuery y la URL con navigate
+  const onSearchChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSearchSubmit = () => {
+    const trimmedValue = inputValue.trim();
+
+    setSearchQuery(trimmedValue);
+
+    const params = new URLSearchParams(); // <-- Empezamos desde cero
+    if (trimmedValue !== "") {
+      params.set("q", trimmedValue);
+    }
+
+    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
+
+    // Limpiamos los filtros seleccionados
+    setCategoriasSeleccionadas([]);
+    setTiposSeleccionados([]);
+  };
+
   useEffect(() => {
    const user = localStorage.getItem("user");
      setIsLoggedIn(!!user);
