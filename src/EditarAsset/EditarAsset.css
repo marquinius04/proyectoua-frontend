@@ -30,9 +30,9 @@
   color: #ffffff;
 }
 
-.input-field,
-.textarea-field,
-.select-field {
+.asset-edit-form .input-field,
+.asset-edit-form .textarea-field,
+.asset-edit-form .select-field {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
