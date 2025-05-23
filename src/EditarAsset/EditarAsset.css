@@ -1,0 +1,85 @@
+.dashboard-perfil {
+  background-color: #57c882;
+  padding: 10px;
+}
+
+.arriba-perfil {
+  background-color: #414c3e;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.asset-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-label {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.input-field,
+.textarea-field,
+.select-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.textarea-field {
+  resize: none;
+  height: 100px;
+}
+
+.save-button {
+  background-color: #57c882;
+  color: #1a2118;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: #45a96b;
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #b80f0f; /* Rojo para indicar peligro */
+  color: #1a2118;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+  background-color: #a10d0d; /* Rojo más oscuro al pasar el mouse */
+  transform: scale(1.05);
+}
+
+.delete-button:active {
+  background-color: #8c0b0b; /* Rojo aún más oscuro al hacer clic */
+  transform: scale(0.98);
+}

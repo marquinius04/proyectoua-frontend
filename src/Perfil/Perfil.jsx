@@ -268,29 +268,6 @@ export const Perfil = ({ className, ...props }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 875);
-  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
-
-  // Función que actualiza searchQuery y la URL con navigate
-  const onSearchChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const onSearchSubmit = () => {
-    const trimmedValue = inputValue.trim();
-
-    setSearchQuery(trimmedValue);
-
-    const params = new URLSearchParams(); // <-- Empezamos desde cero
-    if (trimmedValue !== "") {
-      params.set("q", trimmedValue);
-    }
-
-    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
-
-    // Limpiamos los filtros seleccionados
-    setCategoriasSeleccionadas([]);
-    setTiposSeleccionados([]);
-  };
 
   useEffect(() => {
    const user = localStorage.getItem("user");
@@ -341,9 +318,6 @@ export const Perfil = ({ className, ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
-        inputValue={searchQuery}
-        onSearchChange={onSearchChange}
-        onSearchSubmit={onSearchSubmit}
       />
 
       <div className="dashboard-usuario">
@@ -385,10 +359,9 @@ export const Perfil = ({ className, ...props }) => {
               ) : (
                 userAssets.slice(0, 3).map((asset) => (
                   <div
-                  key={asset._id}
-                  className="asset-item"
-                  onClick={() => handleAssetClick(asset._id)}
-                  style={{ cursor: "pointer" }}
+                    key={asset._id}
+                    className="asset-item"
+                    style={{ cursor: "pointer" }}
                   >
                     <img
                       src={asset.previewUrl || asset.archivoUrl}
@@ -419,8 +392,14 @@ export const Perfil = ({ className, ...props }) => {
                         </div>
                       </div>
                     </div>
+                    <button
+                      className="edit-button"
+                      onClick={() => navigate(`/editAsset/${asset._id}`)}
+                    >
+                      Editar
+                    </button>
                   </div>
-                ))                
+                ))
               )}
             </div>
           </div>
@@ -431,7 +410,7 @@ export const Perfil = ({ className, ...props }) => {
               <>
                 <a href="/downloadHistory">Download history</a>
                 <div className="assets-grid">
-                  {downloadedAssets.map((asset) => (
+                  {downloadedAssets.slice(0, 3).map((asset) => (
                     <div
                       key={asset._id}
                       className="asset-item"

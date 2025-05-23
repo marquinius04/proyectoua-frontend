@@ -11,6 +11,7 @@ import { AssetIndividual } from "./AssetIndividual/AssetIndividual"; // Página 
 import { MisAssets } from "./MisAssets/MisAssets";
 import { Busqueda } from "./Busqueda/Busqueda";
 import { HistorialDeDescargas } from "./HistorialDeDescargas/HistorialDeDescargas";
+import { EditarAsset } from "./EditarAsset/EditarAsset";
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/my-assets" element={<MisAssets />} />
         <Route path="/search" element={<Busqueda />} />
         <Route path="/downloadHistory" element={<HistorialDeDescargas />} />
+        <Route path="/editAsset/:assetId" element={<EditarAsset />} />
       </Routes>
     </Router>
   );

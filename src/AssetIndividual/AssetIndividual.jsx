@@ -13,29 +13,6 @@ export const AssetIndividual = ({ className = "", ...props }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState(queryParams.get("q") || "");
-
-  // Función que actualiza searchQuery y la URL con navigate
-  const onSearchChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const onSearchSubmit = () => {
-    const trimmedValue = inputValue.trim();
-
-    setSearchQuery(trimmedValue);
-
-    const params = new URLSearchParams(); // <-- Empezamos desde cero
-    if (trimmedValue !== "") {
-      params.set("q", trimmedValue);
-    }
-
-    navigate({ pathname: location.pathname, search: params.toString() }, { replace: true });
-
-    // Limpiamos los filtros seleccionados
-    setCategoriasSeleccionadas([]);
-    setTiposSeleccionados([]);
-  };
 
   useEffect(() => {
     const userStr = localStorage.getItem("user");
@@ -220,9 +197,6 @@ export const AssetIndividual = ({ className = "", ...props }) => {
         handleSignUpClick={handleSignUpClick}
         handleSignInClick={handleSignInClick}
         handleLogoutClick={handleLogoutClick}
-        inputValue={searchQuery}
-        onSearchChange={onSearchChange}
-        onSearchSubmit={onSearchSubmit}
       />
       <div className="asset-content">
         {/* Primera fila: Información del asset y proyectos relacionados */}

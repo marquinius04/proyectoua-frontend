@@ -33,7 +33,7 @@
 .dashboard-usuario .dashboard-izq .dashboard-historial {
   display: flex;
   flex-direction: column;
-  background: #2b6340;
+  background: #57c882;
   width: 100%;
   padding: 10px;
 }
@@ -290,6 +290,31 @@
 .upload-button:hover {
   background-color: #4a6e58;
   transform: scale(1.05);
+}
+
+.edit-button {
+  background-color: #57c882; /* Color de fondo principal */
+  color: #ffffff; /* Color del texto */
+  border: none; /* Sin bordes */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: bold; /* Texto en negrita */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animación suave */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+.edit-button:hover {
+  background-color: #45a96b; /* Color de fondo al pasar el mouse */
+  transform: scale(1.05); /* Efecto de zoom */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más intensa */
+}
+
+.edit-button:active {
+  background-color: #3a8a5c; /* Color más oscuro al hacer clic */
+  transform: scale(0.98); /* Efecto de clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
 }
 
 /* Media Queries para Responsividad */
