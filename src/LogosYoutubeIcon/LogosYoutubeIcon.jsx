@@ -5,6 +5,8 @@ export const LogosYoutubeIcon = ({ className, ...props }) => {
     <img
       className={"logos-youtube-icon " + className}
       src="https://www.dropbox.com/scl/fi/r5qv8v2kb7hr5t6uud1b1/logos-youtube-icon.svg?rlkey=k6hw8xrpjzz1hexprchf26clb&st=04x65ac2&raw=1"
+      alt="Youtube Icon"
+      tabIndex={0} // Makes the icon focusable
     />
   );
 };
