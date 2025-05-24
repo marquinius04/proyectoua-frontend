@@ -137,17 +137,17 @@ export const Busqueda = () => {
   return (  
     <div className="pagina-busqueda">
       <div className="content">
-      <Cabecera
-        isLoggedIn={isLoggedIn}
-        handleUploadClick={handleUploadClick}
-        handleProfileClick={handleProfileClick}
-        handleSignUpClick={handleSignUpClick}
-        handleSignInClick={handleSignInClick}
-        handleLogoutClick={handleLogoutClick}
-        inputValue={inputValue}       // PASAMOS EL ESTADO
-        onSearchChange={onSearchChange} // PASAMOS LA FUNCIÓN
-        onSearchSubmit={onSearchSubmit}
-      />
+        <Cabecera
+          isLoggedIn={isLoggedIn}
+          handleUploadClick={handleUploadClick}
+          handleProfileClick={handleProfileClick}
+          handleSignUpClick={handleSignUpClick}
+          handleSignInClick={handleSignInClick}
+          handleLogoutClick={handleLogoutClick}
+          inputValue={inputValue}       // PASAMOS EL ESTADO
+          onSearchChange={onSearchChange} // PASAMOS LA FUNCIÓN
+          onSearchSubmit={onSearchSubmit}
+        />
 
         <h2>Resultados de búsqueda: "{searchQuery}"</h2>
 
@@ -161,6 +161,11 @@ export const Busqueda = () => {
                   type="checkbox"
                   checked={tiposSeleccionados.includes(tipo)}
                   onChange={() => toggleTipo(tipo)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      toggleTipo(tipo); // Ejecuta la misma función que el clic
+                    }
+                  }}
                 />
                 {tipo}
               </label>
@@ -175,6 +180,11 @@ export const Busqueda = () => {
                   type="checkbox"
                   checked={categoriasSeleccionadas.includes(cat)}
                   onChange={() => toggleCategoria(cat)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      toggleCategoria(cat); // Ejecuta la misma función que el clic
+                    }
+                  }}
                 />
                 {cat}
               </label>
@@ -190,7 +200,13 @@ export const Busqueda = () => {
                 key={asset._id}
                 className="asset-item"
                 onClick={() => handleAssetClick(asset._id)}
+                tabIndex={0} // Hace que el elemento sea tabulable
                 style={{ cursor: "pointer" }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleAssetClick(asset._id); // Ejecuta la misma función que el clic
+                  }
+                }}
               >
                 <img src={asset.previewUrl || asset.archivoUrl} alt={asset.titulo} />
                 <div className="asset-title">{asset.titulo}</div>

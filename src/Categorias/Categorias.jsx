@@ -1,8 +1,5 @@
 import "../Inicio/Inicio.css"; // Reutilizamos los estilos del header desde Inicio.css
 import "./Categorias.css"; // Estilos específicos de Categorias
-import { LogoArtRoomDefinitivo2 } from "../LogoArtRoomDefinitivo2/LogoArtRoomDefinitivo2.jsx";
-import { SignUpButton } from "../SignUpButton/SignUpButton.jsx";
-import { SignInButton } from "../SignInButton/SignInButton.jsx";
 import { SkillIconsInstagram } from "../SkillIconsInstagram/SkillIconsInstagram.jsx";
 import { LogosYoutubeIcon } from "../LogosYoutubeIcon/LogosYoutubeIcon.jsx";
 import { DeviconTwitter } from "../DeviconTwitter/DeviconTwitter.jsx";
@@ -85,26 +82,40 @@ export const Categorias = ({ className, ...props }) => {
         <div className="login-container">
           {categories.map((category, index) => (
             <div key={index} className="card">
-              <button className="button">
+              <button 
+                className="button" 
+                tabIndex={0} // Hace que el botón sea tabulable
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleCategoryClick(category.name); // Permite activar con Enter o Espacio
+                  }
+                }}
+              >
                 {category.name}
               </button>
             </div>
           ))}
         </div>
       ) : (
-      <div className="grid-4-columns">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="card"
-            onClick={() => handleCategoryClick(category.name)}
-            style={{ cursor: "pointer" }}
-          >
-            <img src={category.image} alt={category.name} />
-            <div className="card-title">{category.name}</div>
-          </div>
-        ))}
-      </div>
+        <div className="grid-4-columns">
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className="card"
+              onClick={() => handleCategoryClick(category.name)}
+              style={{ cursor: "pointer" }}
+              tabIndex={0} // Hace que el elemento sea tabulable
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleCategoryClick(category.name); // Permite activar con Enter o Espacio
+                }
+              }}
+            >
+              <img src={category.image} alt={category.name} />
+              <div className="card-title">{category.name}</div>
+            </div>
+          ))}
+        </div>
       )}
 
       <footer>
